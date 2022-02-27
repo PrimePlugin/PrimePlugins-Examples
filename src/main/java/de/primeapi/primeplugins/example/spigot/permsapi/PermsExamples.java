@@ -29,9 +29,9 @@ public class PermsExamples implements Listener {
     @EventHandler
     public void onAsyncPlayer(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        if(event.getMessage().equalsIgnoreCase("#givedefault")) {
+        if (event.getMessage().equalsIgnoreCase("#givedefault")) {
             SQLGroup.fromName("default").submit(sqlGroup -> {
-                if(sqlGroup == null) {
+                if (sqlGroup == null) {
                     throw new NullPointerException("group is null!");
                 }
                 try {

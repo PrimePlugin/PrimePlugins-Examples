@@ -50,8 +50,8 @@ public class ClanSubCommand extends SubCommand {
                     .addLore("§e§8»§a " + sqlClan.getRealname().complete()).build()
             );
             guiBuilder.addItem(16, new ItemBuilder(Material.PAPER)
-                    .setDisplayName("§8»§e §aInformation")
-                    .build(),
+                            .setDisplayName("§8»§e §aInformation")
+                            .build(),
                     ((player, itemStack) -> {
                         player.sendMessage("§5");
                         player.closeInventory();

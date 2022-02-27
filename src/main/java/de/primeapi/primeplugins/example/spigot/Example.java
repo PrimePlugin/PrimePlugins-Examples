@@ -1,6 +1,7 @@
 package de.primeapi.primeplugins.example.spigot;
 
 import de.primeapi.primeplugins.example.spigot.clanapi.ClanExamples;
+import de.primeapi.primeplugins.example.spigot.coinsapi.CoinsAPIExamples;
 import de.primeapi.primeplugins.example.spigot.commands.ExampleCommand;
 import de.primeapi.primeplugins.example.spigot.permsapi.PermsExamples;
 import de.primeapi.primeplugins.spigotapi.PrimeCore;
@@ -24,6 +25,10 @@ public class Example extends JavaPlugin {
     private static Example instance;
     private PrimeCore primeCore;
     private Boolean[] online;
+
+    public static Example getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
@@ -49,13 +54,12 @@ public class Example extends JavaPlugin {
         if (online[0]) {
             this.getServer().getPluginManager().registerEvents(new ClanExamples(), this);
         }
-        if(online[4]) {
+        if (online[2]) {
+            this.getServer().getPluginManager().registerEvents(new CoinsAPIExamples(), this);
+        }
+        if (online[4]) {
             this.getServer().getPluginManager().registerEvents(new PermsExamples(), this);
         }
         this.getCommand("examples").setExecutor(new ExampleCommand());
-    }
-
-    public static Example getInstance() {
-        return instance;
     }
 }

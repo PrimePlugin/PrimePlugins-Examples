@@ -2,6 +2,7 @@ package de.primeapi.primeplugins.example.spigot.permsapi;
 
 import de.primeapi.primeplugins.spigotapi.api.info.Info;
 import de.primeapi.primeplugins.spigotapi.api.plugins.perms.PermsAPI;
+import de.primeapi.primeplugins.spigotapi.sql.permissions.SQLGroup;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,7 +15,6 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
  */
 
 public class PermsExamples implements Listener {
-
 
     @Info(info = "Sync Methode!")
     @Deprecated
@@ -29,6 +29,21 @@ public class PermsExamples implements Listener {
     @EventHandler
     public void onAsyncPlayer(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
+        if(event.getMessage().equalsIgnoreCase("#givedefault")) {
+            SQLGroup.fromName("default").submit(sqlGroup -> {
+                if(sqlGroup == null) {
+                    throw new NullPointerException("group is null!");
+                }
+                try {
+                    PermsAPI.getInstance().addGroup(player.getUniqueId(), "default", -1L, 1);
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+                player.sendMessage("§cPermsAPI §7● §7Du hast nun den Rang §8'§7default§8'§7!");
+            });
+            event.setCancelled(true);
+            return;
+        }
         PermsAPI.getInstance().getHighestGroup(player.getUniqueId()).submit(sqlGroup -> {
             event.setFormat(player.getDisplayName() + "§8[§e" + sqlGroup.getName().complete() + "§8]" + event.getMessage());
         });

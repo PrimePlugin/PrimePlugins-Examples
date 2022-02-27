@@ -2,6 +2,7 @@ package de.primeapi.primeplugins.example.spigot;
 
 import de.primeapi.primeplugins.example.spigot.clanapi.ClanExamples;
 import de.primeapi.primeplugins.example.spigot.commands.ExampleCommand;
+import de.primeapi.primeplugins.example.spigot.permsapi.PermsExamples;
 import de.primeapi.primeplugins.spigotapi.PrimeCore;
 import de.primeapi.primeplugins.spigotapi.api.plugins.clan.ClanAPI;
 import de.primeapi.primeplugins.spigotapi.api.plugins.coins.CoinsAPI;
@@ -47,6 +48,9 @@ public class Example extends JavaPlugin {
         }
         if (online[0]) {
             this.getServer().getPluginManager().registerEvents(new ClanExamples(), this);
+        }
+        if(online[4]) {
+            this.getServer().getPluginManager().registerEvents(new PermsExamples(), this);
         }
         this.getCommand("examples").setExecutor(new ExampleCommand());
     }

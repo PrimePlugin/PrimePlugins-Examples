@@ -1,6 +1,7 @@
 package de.primeapi.primeplugins.example.spigot.commands;
 
 import de.primeapi.primeplugins.example.spigot.clanapi.ClanSubCommand;
+import de.primeapi.primeplugins.example.spigot.permsapi.PermsSubCommand;
 import de.primeapi.primeplugins.spigotapi.api.PrimePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,7 +23,7 @@ public class ExampleCommand implements CommandExecutor {
         PrimePlayer p = new PrimePlayer((Player) commandSender);
 
         if(args.length < 1) {
-            p.thePlayer().sendMessage("§7● §aCMD §7● §cNutzung §8§8»§e §8[§e/example §8<§eClan§8>§8]");
+            p.thePlayer().sendMessage("§7● §aCMD §7● §cNutzung §8§8»§e §8[§e/example §8<§eClan§8, §ePerms§8>]");
             return true;
         }
 
@@ -30,8 +31,10 @@ public class ExampleCommand implements CommandExecutor {
             case "clan": {
                 return new ClanSubCommand().execute(p, args);
             }
+            case "perms":
+                return new PermsSubCommand().execute(p, args);
             default:
-                p.thePlayer().sendMessage("§7● §aCMD §7● §cNutzung §8§8»§e §8[§e/example §8<§eClan§8>§8]");
+                p.thePlayer().sendMessage("§7● §aCMD §7● §cNutzung §8§8»§e §8[§e/example §8<§eClan§8, §ePerms§8>]");
         }
         return true;
     }

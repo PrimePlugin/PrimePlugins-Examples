@@ -1,6 +1,6 @@
 package de.primeapi.primeplugins.example.spigot.commands;
 
-import de.primeapi.primeplugins.example.spigot.commands.subcommands.ClanSubCommand;
+import de.primeapi.primeplugins.example.spigot.clanapi.ClanSubCommand;
 import de.primeapi.primeplugins.spigotapi.api.PrimePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

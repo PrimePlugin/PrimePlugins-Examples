@@ -1,0 +1,6 @@
+name: PrimePlugins-Examples
+version: 1.0
+author: Exceptionpilot
+main: de.primeapi.primeplugins.example.spigot.Example
+commands:
+  examples:
